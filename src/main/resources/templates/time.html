@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+    <title th:text="#{title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<nav class="nav">
+    <ul>
+        <li>
+            <a href="/?lang=de" th:text="#{lang.de}"></a>
+        </li>
+        <li>
+            <a href="/?lang=en" th:text="#{lang.en}"></a>
+        </li>
+    </ul>
+</nav>
+<div align="center">
+    <h1 class="heading" th:text="#{title}"></h1>
+    <form action="#" th:action="@{/}" th:object="${time}" method="post">
+
+        <div>
+            <span th:text="#{format}"></span>
+            <select name="locale">
+                <option>DE</option>
+                <option>EN</option>
+            </select>
+        </div>
+
+        <div class="mt">
+            <span th:text="#{time}"></span>
+            <input type="text" th:field="*{time}" pattern="^(([0-1]?[0-9]|2[0-3]):[0-5][0-9])([ap][m])?$"/>
+        </div>
+
+        <div class="mt">
+            <span th:text="#{accuracy}"></span>
+            <select name="accuracy">
+                <option>5</option>
+                <option>15</option>
+            </select>
+        </div>
+
+        <div class="mt">
+            <Button type="submit" th:text="#{submit}"/>
+            <Button type="reset" th:text="#{reset}"/>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
